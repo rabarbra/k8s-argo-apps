@@ -6,24 +6,25 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: https://github.com/rabarbra/k8s-argo-apps.git
-    targetRevision: HEAD
-    ref: values
-  - repoURL: https://hub.jupyter.org/helm-chart/
+  - repoURL: https://jupyterhub.github.io/helm-chart/
     chart: jupyterhub
-    targetRevision: "3.3.8"
+    targetRevision: 3.3.8
     helm:
       valueFiles:
         - $values/apps/jupyter/envs/prod/values-prod.yml
+  - repoURL: https://github.com/rabarbra/k8s-argo-apps.git
+    targetRevision: HEAD
+    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: jupyter
   syncPolicy:
     automated:
       prune: true
-      selfHeal: false
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - ServerSideApply=true
   ignoreDifferences:
   - group: admissionregistration.k8s.io
     kind: MutatingWebhookConfiguration
