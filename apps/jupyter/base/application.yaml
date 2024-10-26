@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: https://jupyterhub.github.io/helm-chart/
-    chart: jupyterhub
+  - repoURL: https://hub.jupyter.org/helm-chart/
+    chart: jupyterhub/jupyterhub
     targetRevision: 3.3.8
     helm:
       valueFiles:
