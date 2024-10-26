@@ -8,7 +8,7 @@ spec:
   sources:
   - repoURL: https://hub.jupyter.org/helm-chart/
     chart: jupyterhub
-    targetRevision: 3.3.8
+    targetRevision: "3.3.8"
     helm:
       valueFiles:
         - $values/apps/jupyter/envs/prod/values-prod.yml
@@ -24,7 +24,6 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
-    - ServerSideApply=true
   ignoreDifferences:
   - group: admissionregistration.k8s.io
     kind: MutatingWebhookConfiguration
