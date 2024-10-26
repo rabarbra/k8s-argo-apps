@@ -41,7 +41,6 @@ hub:
     annotations: {}
     ports:
       nodePort:
-      appProtocol:
     extraPorts: []
     loadBalancerIP:
   baseUrl: /
@@ -69,7 +68,6 @@ hub:
       accessModes:
         - ReadWriteOnce
       storage: 1Gi
-      subPath:
       storageClassName:
     url: mysql+pymysql://Unclad:ssP7n9v&$2hKYb4Mqy2uHecTbD@mysql:3306/jupyter
     password:
@@ -416,7 +414,6 @@ singleuser:
       pvcNameTemplate:
       volumeNameTemplate: volume-{user_server}
       storageAccessModes: [ReadWriteOnce]
-      subPath:
   image:
     name: quay.io/jupyterhub/k8s-singleuser-sample
     tag: "4.0.0-beta.4"
@@ -707,7 +704,6 @@ ingress:
     - hosts:
       - jupyter.rabarbra.me
       secretName: jupyter-tls
-  extraPaths: []
 
 # cull relates to the jupyterhub-idle-culler service, responsible for evicting
 # inactive singleuser pods.
