@@ -6,6 +6,13 @@ gitea:
       NAME: gitea
       USER: Unclad
       PASSWD: "ssP7n9v&$2hKYb4Mqy2uHecTbD"
+    session:
+      PROVIDER: memory
+    cache:
+      ADAPTER: memory
+    queue:
+      TYPE: level
+
 
 postgresql:
   enabled: false
