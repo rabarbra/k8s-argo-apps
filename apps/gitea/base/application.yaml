@@ -10,10 +10,11 @@ spec:
     chart: gitea
     targetRevision: "10.5.0"
     plugin:
-      - name: HELM_VALUES
-        value:
-          valueFiles:
-            - $values/apps/gitea/envs/prod/values.yaml
+      env:
+        - name: HELM_VALUES
+          value:
+            valueFiles:
+              - $values/apps/gitea/envs/prod/values.yaml
   - repoURL: https://github.com/rabarbra/k8s-argo-apps.git
     targetRevision: main
     ref: values
