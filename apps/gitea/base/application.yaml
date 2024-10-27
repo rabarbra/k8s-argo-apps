@@ -12,7 +12,7 @@ spec:
     plugin:
       env:
         - name: HELM_VALUES
-          value:
+          value: |
             valueFiles:
               - $values/apps/gitea/envs/prod/values.yaml
   - repoURL: https://github.com/rabarbra/k8s-argo-apps.git
