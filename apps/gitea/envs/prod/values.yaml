@@ -30,7 +30,7 @@ ingress:
       secretName: gitea-tls
 
 persistence:
-  enabled: false
+  enabled: true
 
 redis-cluster:
   enabled: false
