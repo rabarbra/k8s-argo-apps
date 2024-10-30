@@ -9,6 +9,7 @@ spec:
   - repoURL: https://dl.gitea.com/charts/
     chart: gitea
     targetRevision: "10.5.0"
+    plugin: argocd-vault-plugin-helm
     helm:
       valueFiles:
         - $values/apps/gitea/envs/prod/values.yaml
