@@ -12,8 +12,48 @@ spec:
     plugin:
       name: argocd-vault-plugin-helm
       env:
-        - name: HELM_ARGS
-          value: -f $values/apps/gitea/envs/prod/values.yaml
+        - name: HELM_VALUES
+          value: |
+            gitea:
+              config:
+                database:
+                  DB_TYPE: mysql
+                  HOST: mysql:3306
+                  NAME: gitea
+                  USER: Unclad
+                  PASSWD: <path:kv/data/mysql#password>
+
+            postgresql:
+              enabled: false
+
+            postgresql-ha:
+              enabled: false
+
+            ingress:
+              enabled: true
+              annotations:
+                cert-manager.io/cluster-issuer: letsencrypt-prod
+                kubernetes.io/ingress.class: nginx
+                nginx.ingress.kubernetes.io/proxy-body-size: 50m
+              className: nginx
+              hosts:
+                - host: git.rabarbra.me
+                  paths:
+                    - path: /
+                      pathType: Prefix
+              tls:
+                - hosts:
+                  - git.rabarbra.me
+                  secretName: gitea-tls
+
+            persistence:
+              enabled: true
+
+            redis-cluster:
+              enabled: false
+
+            redis:
+              enabled: true
     # helm:
     #   valueFiles:
     #     - $values/apps/gitea/envs/prod/values.yaml
