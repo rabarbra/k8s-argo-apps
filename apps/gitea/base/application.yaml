@@ -10,7 +10,6 @@ spec:
     chart: gitea
     targetRevision: "10.5.0"
     plugin:
-      name: argocd-vault-plugin-helm
       env:
         - name: HELM_VALUES
           value: |
@@ -57,9 +56,9 @@ spec:
     # helm:
     #   valueFiles:
     #     - $values/apps/gitea/envs/prod/values.yaml
-  - repoURL: https://github.com/rabarbra/k8s-argo-apps.git
-    targetRevision: main
-    ref: values
+  # - repoURL: https://github.com/rabarbra/k8s-argo-apps.git
+  #   targetRevision: main
+  #   ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: gitea
