@@ -20,7 +20,7 @@ spec:
                   HOST: mysql:3306
                   NAME: gitea
                   USER: Unclad
-                  PASSWD: <path:kv/data/mysql#password>
+                  PASSWD: <path:kv-v2/data/mysql#password>
 
             postgresql:
               enabled: false
