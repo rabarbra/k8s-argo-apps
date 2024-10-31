@@ -33,6 +33,8 @@ spec:
             password:
           pdb:
             enabled: false
+          networkPolicy:
+            enabled: false
         proxy:
           service:
             type: ClusterIP
