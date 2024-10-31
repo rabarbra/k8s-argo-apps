@@ -66,8 +66,8 @@ spec:
               - jupyter.rabarbra.me
               secretName: jupyter-tls
   destination:
-    # server: https://kubernetes.default.svc
-    # namespace: jupyter
+    server: https://kubernetes.default.svc
+    namespace: jupyter
   syncPolicy:
     automated:
       prune: true
