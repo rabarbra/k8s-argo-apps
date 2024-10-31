@@ -53,15 +53,15 @@ spec:
 
     #         redis:
     #           enabled: true
-    # helm:
-    #   valueFiles:
-    #     - $values/apps/gitea/envs/prod/values.yaml
     helm:
       valueFiles:
-        - values.yaml
-  # - repoURL: https://github.com/rabarbra/k8s-argo-apps.git
-  #   targetRevision: main
-  #   ref: values
+        - $values/apps/gitea/envs/prod/values.yaml
+    # helm:
+    #   valueFiles:
+    #     - values.yaml
+  - repoURL: https://github.com/rabarbra/k8s-argo-apps.git
+    targetRevision: main
+    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: gitea
