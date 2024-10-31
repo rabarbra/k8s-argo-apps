@@ -51,6 +51,8 @@ spec:
             networkPolicy:
               enabled: false
         singleuser:
+          cloudMetadata:
+            blockWithIpTables: false
           networkPolicy:
             enabled: false
         scheduling:
