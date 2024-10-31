@@ -9,9 +9,9 @@ ingress:
   path: /
   pathType: 'Prefix'
   tls:
-   - secretName: filebrowser-tls
+   - secretName: readarr-tls
      hosts:
-       - files.rabarbra.me
+       - books.rabarbra.me
 
 persistentVolumeClaims:
   readarr-config:
