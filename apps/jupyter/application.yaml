@@ -1,0 +1,92 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jupyter
+  namespace: argocd
+spec:
+  project: apps
+  sources:
+  - repoURL: https://hub.jupyter.org/helm-chart/
+    chart: jupyterhub
+    targetRevision: "3.3.8"
+    helm:
+      valueObject:
+        hub:
+          revisionHistoryLimit:
+          config:
+            JupyterHub:
+              admin_access: true
+              authenticator_class: dummy
+          service:
+            type: ClusterIP
+            annotations: {}
+            ports:
+              nodePort:
+            extraPorts: []
+            loadBalancerIP:
+          baseUrl: /
+          cookieSecret:
+          initContainers: []
+          nodeSelector: {}
+          tolerations: []
+          concurrentSpawnLimit: 64
+          consecutiveFailureLimit: 5
+          activeServerLimit:
+          db:
+            type: mysql
+            upgrade:
+            pvc:
+              annotations: {}
+              selector: {}
+              accessModes:
+                - ReadWriteOnce
+              storage: 1Gi
+              storageClassName:
+            url: mysql+pymysql://<path:kv-v2/data/mysql#user>:<path:kv-v2/data/mysql#password>@mysql:3306/jupyter
+            password:
+        proxy:
+          service:
+            type: ClusterIP
+            labels: {}
+            annotations: {}
+            nodePorts:
+              http:
+              https:
+            disableHttpPort: false
+            extraPorts: []
+            loadBalancerIP:
+            loadBalancerSourceRanges: []
+        singleuser:
+          networkPolicy:
+            enabled: false
+        scheduling:
+          userScheduler:
+            enabled: false
+        ingress:
+          enabled: true
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            kubernetes.io/ingress.class: nginx
+          ingressClassName: nginx
+          hosts:
+            - jupyter.rabarbra.me
+          pathSuffix:
+          pathType: Prefix
+          tls:
+            - hosts:
+              - jupyter.rabarbra.me
+              secretName: jupyter-tls
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: jupyter
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
+    jqPathExpressions:
+    - .webhooks[]?.clientConfig.caBundle
