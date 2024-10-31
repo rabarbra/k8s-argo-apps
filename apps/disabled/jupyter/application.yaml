@@ -10,7 +10,7 @@ spec:
     chart: jupyterhub
     targetRevision: "3.3.8"
     helm:
-      valueObject:
+      valuesObject:
         hub:
           revisionHistoryLimit:
           config:
