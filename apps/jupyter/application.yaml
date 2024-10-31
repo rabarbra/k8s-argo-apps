@@ -52,7 +52,7 @@ spec:
               enabled: false
         singleuser:
           cloudMetadata:
-            blockWithIpTables: false
+            blockWithIptables: false
           networkPolicy:
             enabled: false
         scheduling:
