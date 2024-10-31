@@ -47,6 +47,9 @@ spec:
             extraPorts: []
             loadBalancerIP:
             loadBalancerSourceRanges: []
+          chp:
+            networkPolicy:
+              enabled: false
         singleuser:
           networkPolicy:
             enabled: false
