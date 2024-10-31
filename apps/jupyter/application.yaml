@@ -34,14 +34,6 @@ spec:
           activeServerLimit:
           db:
             type: mysql
-            upgrade:
-            pvc:
-              annotations: {}
-              selector: {}
-              accessModes:
-                - ReadWriteOnce
-              storage: 1Gi
-              storageClassName:
             url: mysql+pymysql://<path:kv-v2/data/mysql#user>:<path:kv-v2/data/mysql#password>@mysql:3306/jupyter
             password:
         proxy:
