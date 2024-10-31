@@ -12,6 +12,8 @@ spec:
       revision: HEAD
       directories:
       - path: apps/*
+      - path: apps/disabled
+        exclude: true
   template:      
     metadata:
       name: '{{index .path.segments 1}}-appset' 
