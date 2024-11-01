@@ -29,7 +29,7 @@ spec:
           activeServerLimit:
           db:
             type: mysql
-            url: mysql+pymysql://<path:kv-v2/data/mysql#user>:'<path:kv-v2/data/mysql#password>'@mysql:3306/jupyter
+            url: "mysql+pymysql://<path:kv-v2/data/mysql#user>:<path:kv-v2/data/mysql#password>@mysql:3306/jupyter"
             password:
           pdb:
             enabled: false
