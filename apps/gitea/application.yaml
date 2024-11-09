@@ -12,15 +12,11 @@ spec:
     helm:
       valuesObject:
         gitea:
-          config:
-            database:
-              DB_TYPE: mysql
-              HOST: mysql:3306
-              NAME: gitea
-              USER: <path:kv-v2/data/mysql#user>
-              PASSWD: <path:kv-v2/data/mysql#password>
         postgresql:
-          enabled: false
+          enabled: true
+          primary:
+            persistence:
+              size: 5Gi
         postgresql-ha:
           enabled: false
         ingress:
