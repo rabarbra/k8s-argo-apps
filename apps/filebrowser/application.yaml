@@ -13,11 +13,10 @@ spec:
       valuesObject:
         ingress:
           enabled: true
-          className: nginx
+          className: contour
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-prod
-            kubernetes.io/ingress.class: nginx
-            nginx.ingress.kubernetes.io/proxy-body-size: 50g
+            kubernetes.io/ingress.class: contour
           hosts:
             - host: files.rabarbra.me
               paths:
