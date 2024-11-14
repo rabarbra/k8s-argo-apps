@@ -20,7 +20,9 @@ spec:
             - host: sh.rabarbra.me
               paths:
                 - path: /
-                  pathType: ImplementationSpecific
+                  pathType: Prefix
+                - path: /ws
+                  pathType: Prefix
           tls:
           - secretName: web-tty-tls
             hosts:
