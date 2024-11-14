@@ -16,12 +16,11 @@ spec:
           className: contour
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-prod
+            projectcontour.io/websocket-routes: "/"
           hosts:
             - host: sh.rabarbra.me
               paths:
                 - path: /
-                  pathType: Prefix
-                - path: /ws
                   pathType: Prefix
           tls:
           - secretName: web-tty-tls
